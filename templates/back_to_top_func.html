@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>back_to_top_func</title>
+    <style>
+        {# top按钮 #}
+        /* 按钮边框的大小、位置、样式 */
+        .toTop-arrow {
+            width: 56px;
+            height: 56px;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            opacity: 0.5;
+            background: url("{% static 'app/img/up_to_top.png' %}");
+            background-size: contain;
+            cursor: pointer;
+            position: fixed;
+            right: 5rem;
+            bottom: 5rem;
+            display: none;
+            transition: transform 0.5s;
+        }
+        /* 取消点击按钮时的聚焦 */
+        .toTop-arrow:focus {
+            outline: none;
+        }
+        .toTop-arrow:hover {
+            transform: translateY(-10px);
+            opacity: 0.8 !important;
+            animation: move 0.7s 0.5s linear infinite alternate;
+        }
+        @keyframes move {
+            from {
+                transform: translateY(-10px);
+            }
+            to {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+{# top按钮 #}
+<button type="button" id="BackTop" class="toTop-arrow" style="z-index: 100;"></button>
+
+<script>
+{#  top按钮  #}
+    // 向上滚动的函数
+    $(function () {
+        $('#BackTop').click(function () {
+            $('html,body').animate({scrollTop: 0}, 500);
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                $('#BackTop').fadeIn(300);
+            } else {
+                $('#BackTop').stop().fadeOut(300);
+            }
+        }).scroll();
+    });
+</script>
+</body>
+</html>

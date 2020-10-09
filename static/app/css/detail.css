@@ -1,0 +1,69 @@
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    color: #4b4b4b;
+}
+
+.entry-title {
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.entry-content h1 {
+    margin-top: 80px;
+    margin-bottom: 15px;
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.entry-content h1:nth-child(1) {
+    margin-top: 30px;
+}
+
+.entry-content h2 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.entry-content h3 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.col-md-4 ul{
+    list-style: none;
+}
+
+#table-of-content {
+    padding-left: 0;
+}
+
+strong {
+    color: #4b4b4b;
+}
+
+/* 表格居中、自适应 */
+th {
+    white-space: nowrap;
+    text-align: center;
+}
+
+/*标题下划线*/
+.entry-content h1 {
+    border-bottom: 1px solid #e9e9e9;
+
+}
+
+.entry-content a{
+    color: #4b8ddd;
+}
+
+/*补充说明*/
+blockquote {
+    background: #3333330a;
+    font-size: 16px;
+    font-style: italic;
+}

@@ -1,0 +1,94 @@
+version: '3'
+
+services:
+
+  elasticsearch:
+
+    build:
+      context: ..
+      dockerfile: production/elasticsearch/Dockerfile
+
+    image: elasticsearch:666
+    container_name: elasticsearch
+
+    ports:
+      - "9200:9200"
+
+
+
+  mysql:
+
+    build:
+      context: ..
+      dockerfile: local/mysql/Dockerfile
+
+    image: mysql:666
+    container_name: mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: TerryMysql123!@#
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - /data/mysql:/var/lib/mysql
+
+
+  web:
+
+    build:
+      context: ..
+      dockerfile: production/web/Dockerfile
+
+    image: web:666
+    container_name: web
+
+    expose:
+      - "8000"
+
+    environment:
+      DJANGO_SECRET_KEY: 2pe8eih8oah2_2z1=7f84bzme7^bwuto7y&f(#@rgd9ux9mp-3
+
+    volumes:
+      - /home/project/Blog:/home/project/Blog
+
+    working_dir: /home/project/Blog
+
+    command: gunicorn Blog.wsgi -w 2 -k gthread -b 0:8000 --reload
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "200k" # 单个文件大小为200k
+        max-file: "10" # 最多10个文件
+
+    depends_on:
+      - elasticsearch
+      - mysql
+
+
+  nginx:
+
+    build:
+      context: ..
+      dockerfile: production/nginx/Dockerfile
+
+    image: nginx:666
+    container_name: nginx
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - /home/project/Blog:/home/project/Blog
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "200k" # 单个文件大小为200k
+        max-file: "10" # 最多10个文件
+
+    depends_on:
+      - web
