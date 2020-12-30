@@ -70,7 +70,7 @@ services:
       context: ..
       dockerfile: production/nginx/Dockerfile
 
-    image: nginx:666
+    image: nginx:test
     container_name: nginx
 
     ports:

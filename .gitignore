@@ -130,3 +130,6 @@ dmypy.json
 
 # svn
 .svn/
+
+# pycharm
+.idea/

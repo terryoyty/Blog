@@ -113,7 +113,7 @@
                 {% block main %}
                 {% endblock main %}
             </main>
-            <aside class="col-md-4">
+            <aside class="col-md-4 stickysidebar">
                 {% block toc %}
                 {% endblock %}
 
@@ -171,7 +171,7 @@
 
     {#  粘性侧边栏  #}
     jQuery(document).ready(function () {
-        jQuery('.col-md-4').theiaStickySidebar({
+        jQuery('.stickysidebar').theiaStickySidebar({
             // Settings
             additionalMarginTop: 30,
             additionalMarginBottom: 30

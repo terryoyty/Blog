@@ -1,4 +1,4 @@
-FROM python
+FROM python:3.8
 
 COPY .config/requirements.txt /home/project/Blog/
 COPY .config/django-mysql-base /home/project/Blog/
