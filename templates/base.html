@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{% static 'app/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/custom.css' %}">
     {# 代码块高亮 #}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css">
 
     {% block link %}
     {% endblock %}
@@ -25,8 +25,69 @@
         {# 代码块 #}
         pre {
             padding: 0;
-            border-radius: 6px;
-            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .hljs-ln {
+            margin: 10px 0;
+        }
+
+        /* for block of numbers */
+        pre code .hljs-ln-numbers {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            text-align: right;
+            color: #ccc;
+            border-right: 1px solid #CCC;
+            vertical-align: top;
+            padding-right: 5px;
+
+            /* your custom style here */
+            width: 30px;
+        }
+
+        /* for block of code */
+        pre code .hljs-ln-code {
+            padding-left: 15px;
+            font-size: 14px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 20px;
+            top: 13px;
+            color: #000;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 4px;
+
+            display: none;
+            opacity: 0.3;
+        }
+
+        .copy-tips {
+            position: absolute;
+            right: 60px;
+            top: 15px;
+            border: rgba(0,0,0,0.8) solid;
+            color: rgba(0,0,0,0.8);
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 600;
+            padding: 0 5px;
+            opacity: 1;
+
+            display: none;
         }
 
         {# md黄色高亮 #}
@@ -44,6 +105,8 @@
         .post, .widget, #site-header {
             background: rgba(255, 255, 255, 0.5);
         }
+
+
 
     </style>
     <!-- js -->
@@ -157,7 +220,7 @@
 {#  代码块高亮  #}
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
 {#  代码块行标  #}
-{#<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>#}
+<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
 {#  粘性侧边栏  #}
 <script type="text/javascript" src="{% static "common/js/theia-sticky-sidebar.js" %}"></script>
 {# 全屏粒子动画 #}
@@ -167,7 +230,10 @@
     {#  代码块高亮  #}
     hljs.initHighlightingOnLoad();
     {#  代码块行标  #}
-    {#hljs.initLineNumbersOnLoad();#}
+    hljs.initLineNumbersOnLoad({
+        // 让单行的时候也显示行号
+        singleLine: true
+    });
 
     {#  粘性侧边栏  #}
     jQuery(document).ready(function () {
@@ -177,6 +243,59 @@
             additionalMarginBottom: 30
         });
     });
+
+    {#  代码块复制 2020-1-4  #}
+    $('pre').prepend("<div class='copy-btn'><span class='glyphicon glyphicon-duplicate'></span></div>" +
+        "<div class='copy-tips'>点击复制</div>");
+    //鼠标经过代码块
+    $('pre').hover(
+        function show_copy_bth() {
+            $(this).children('.copy-btn').css('display', 'block')
+        },
+        function hidden_copy_btn() {
+            $(this).children('.copy-btn').css('display', 'none')
+        }
+    )
+    //鼠标经过复制按钮
+    $('.copy-btn').hover(
+        function () {
+            $(this).css('opacity', '0.8')
+            $(this).siblings('.copy-tips').css('display', 'block')
+        },
+        function () {
+            $(this).css('opacity', '0.3')
+            $(this).siblings('.copy-tips').css('display', 'none')
+            $(this).siblings('.copy-tips').text('点击复制')
+        }
+    )
+    //点击复制按钮效果
+    $('.copy-btn').on('mousedown', function (){
+        $(this).css('background', 'rgba(0, 0, 0, 0.1)')
+    })
+    $('.copy-btn').on('mouseup', function (){
+         $(this).css('background', 'none')
+    })
+    //点击按钮逻辑
+    $('.copy-btn').on('click', function (e) {
+        let content = e.currentTarget.nextElementSibling.innerText
+        //去除多余空行
+        let new_content = content.replaceAll('\n\n', '\n')
+
+        // 保存到剪切板
+        function save(e) {
+            e.clipboardData.setData('text/plain', new_content) // 剪贴板内容设置
+            e.preventDefault()
+            console.log('复制成功')
+        }
+        document.addEventListener('copy', save) // 监听浏览器copy事件
+        document.execCommand('copy') // 执行copy事件，这时监听函数会执行save函数。
+        document.removeEventListener('copy', save) // 移除copy事件
+
+        $(this).siblings('.copy-tips').text('复制成功')
+    })
+
+
+
 
 
 </script>
