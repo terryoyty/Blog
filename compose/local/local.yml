@@ -2,37 +2,6 @@ version: '3'
 
 services:
 
-  elasticsearch:
-
-    build:
-      context: ..
-      dockerfile: local/elasticsearch/Dockerfile
-
-    image: elasticsearch:local
-    container_name: elasticsearch
-
-    ports:
-      - "9200:9200"
-
-
-  mysql:
-
-    build:
-      context: ..
-      dockerfile: local/mysql/Dockerfile
-
-    image: mysql:local
-    container_name: mysql
-
-    environment:
-      MYSQL_ROOT_PASSWORD: TerryMysql123!@#
-
-    ports:
-      - "3306:3306"
-
-    volumes:
-      - D:/BlogData/mysql:/var/lib/mysql
-
   web:
 
     build:
@@ -46,9 +15,9 @@ services:
       - "8000:8000"
 
     volumes:
-      - D:\Projects\PY\Blog:/home/www/Blog
+      - D:\Projects\PY\Blog:/opt/Blog
 
-    working_dir: /home/www/Blog
+    working_dir: /opt/Blog
 
     command: python manage.py runserver 0:8000
 
@@ -57,7 +26,3 @@ services:
       options:
         max-size: "200k" # 单个文件大小为200k
         max-file: "10" # 最多10个文件
-
-    depends_on:
-      - elasticsearch
-      - mysql

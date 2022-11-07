@@ -32,7 +32,7 @@ services:
       - "3306:3306"
 
     volumes:
-      - /data/mysql:/var/lib/mysql
+      - /mnt/data/mysql:/var/lib/mysql
 
 
   web:
@@ -51,9 +51,9 @@ services:
       DJANGO_SECRET_KEY: 2pe8eih8oah2_2z1=7f84bzme7^bwuto7y&f(#@rgd9ux9mp-3
 
     volumes:
-      - /home/project/Blog:/home/project/Blog
+      - /opt/Blog:/opt/Blog
 
-    working_dir: /home/project/Blog
+    working_dir: /opt/Blog
 
     command: gunicorn Blog.wsgi -w 2 -k gthread -b 0:8000 --reload
 
@@ -82,7 +82,7 @@ services:
       - "443:443"
 
     volumes:
-      - /home/project/Blog:/home/project/Blog
+      - /opt/Blog:/opt/Blog
 
     logging:
       driver: json-file

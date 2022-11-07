@@ -1,15 +1,15 @@
 FROM python:3.8
 
-COPY .config/requirements.txt /home/project/Blog/
-COPY .config/django-mysql-base /home/project/Blog/
-COPY .config/django-mysql-operations /home/project/Blog/
-COPY .config/mistune.py /home/project/Blog/
+COPY .config/requirements.txt /opt/Blog/
+COPY .config/django-mysql-base /opt/Blog/
+COPY .config/django-mysql-operations /opt/Blog/
+COPY .config/mistune.py /opt/Blog/
 
-COPY .config/mdeditor/image-handle-paste.js /home/project/Blog/
-COPY .config/mdeditor/markdown.html /home/project/Blog/
+COPY .config/mdeditor/image-handle-paste.js /opt/Blog/
+COPY .config/mdeditor/markdown.html /opt/Blog/
 
 
-WORKDIR /home/project/Blog/
+WORKDIR /opt/Blog/
 RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
     && apt-get clean \
     && apt-get update \
