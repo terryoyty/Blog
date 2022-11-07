@@ -8,7 +8,7 @@ services:
       context: ..
       dockerfile: local/elasticsearch/Dockerfile
 
-    image: elasticsearch:test
+    image: elasticsearch:local
     container_name: elasticsearch
 
     ports:
@@ -21,7 +21,7 @@ services:
       context: ..
       dockerfile: local/mysql/Dockerfile
 
-    image: mysql:test
+    image: mysql:local
     container_name: mysql
 
     environment:
@@ -31,7 +31,7 @@ services:
       - "3306:3306"
 
     volumes:
-      - /data/mysql:/var/lib/mysql
+      - D:/BlogData/mysql:/var/lib/mysql
 
   web:
 
@@ -39,18 +39,18 @@ services:
       context: ..
       dockerfile: local/web/Dockerfile
 
-    image: web:test
+    image: web:local
     container_name: web
 
     ports:
       - "8000:8000"
 
     volumes:
-      - F:\MyProject\Blog:/home/www/Blog
+      - D:\Projects\PY\Blog:/home/www/Blog
 
     working_dir: /home/www/Blog
 
-    command: gunicorn Blog.wsgi -w 2 -k gthread -b 0:8000 --reload
+    command: python manage.py runserver 0:8000
 
     logging:
       driver: json-file
@@ -61,27 +61,3 @@ services:
     depends_on:
       - elasticsearch
       - mysql
-
-
-
-  nginx:
-
-    build:
-      context: ..
-      dockerfile: production/nginx/Dockerfile
-
-    image: nginx:test
-    container_name: nginx
-
-    ports:
-      - "80:80"
-      - "443:443"
-
-    logging:
-      driver: json-file
-      options:
-        max-size: "200k" # 单个文件大小为200k
-        max-file: "10" # 最多10个文件
-
-    depends_on:
-      - web
