@@ -1,8 +1,6 @@
 
 bind = '0.0.0.0:8000'
 
-worker_class = 'Blog.wsgi'  # 还可以使用gevent模式，还可以使用sync模式，默认sync模式
-
 # workers = multiprocessing.cpu_count() * 2 + 1 # 并行工作进程数
 workers = 2  # 并行工作进程数
 threads = 1  # 指定每个工作者的线程数
