@@ -16,7 +16,7 @@ RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sourc
     && apt-get clean \
     && apt-get update \
      # vim ...
-    && apt-get install -y vim supervisor\
+    && apt-get install -y vim supervisor \
     && pip install -r .config/requirements.txt -i https://pypi.douban.com/simple/ \
     # 全文检索
     && pip install django-haystack -i https://pypi.douban.com/simple/ \
@@ -41,8 +41,8 @@ RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sourc
     && rm /usr/local/lib/python3.8/site-packages/mdeditor/templates/markdown.html \
     && mv .config/mdeditor/markdown.html /usr/local/lib/python3.8/site-packages/mdeditor/templates/markdown.html \
     # supervisor
-    && mkdir -p /etc/supervisor/conf.d  \
-    && cp  .config/supervisor /etc/supervisor \
+    && rm -rf /etc/supervisor \
+    && mv .config/supervisor /etc/supervisor \
     && mkdir -p /var/log/supervisor/gunicorn \
     # gunicorn
     && mkdir -p /var/log/gunicorn
