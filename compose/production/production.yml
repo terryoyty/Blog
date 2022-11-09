@@ -20,7 +20,7 @@ services:
 
     build:
       context: ..
-      dockerfile: local/mysql/Dockerfile
+      dockerfile: production/mysql/Dockerfile
 
     image: mysql:666
     container_name: mysql
