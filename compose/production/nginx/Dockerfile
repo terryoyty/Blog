@@ -8,7 +8,7 @@ COPY .config/Blog.conf /etc/nginx/conf.d/Blog.conf
 RUN apt-get update \
     && rm /etc/nginx/conf.d/default.conf \
     # https
-    && apt-get install -y --allow-unauthenticated certbot python-certbot-nginx \
+    && apt-get install -y --allow-unauthenticated certbot python3-certbot-nginx \
     # vim
     && apt-get install -y vim \
     # ps
