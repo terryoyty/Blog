@@ -13,6 +13,8 @@ WORKDIR /opt/Blog/
 RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
     && apt-get clean \
     && apt-get update \
+     # vim ...
+    && apt-get install -y vim supervisor\
     && pip install -r requirements.txt -i https://pypi.douban.com/simple/ \
     # 全文检索
     && pip install django-haystack -i https://pypi.douban.com/simple/ \
@@ -25,8 +27,6 @@ RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sourc
     && mv django-mysql-operations /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/operations.py \
     # mysql认证问题（RuntimeError: cryptography is required for sha256_password or caching_sha2_p）
     && pip install cryptography -i https://pypi.douban.com/simple/ \
-    # vim
-    && apt-get install -y vim \
     # 时区
     && rm /etc/localtime \
     && cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \
@@ -37,5 +37,9 @@ RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sourc
     && mkdir /usr/local/lib/python3.8/site-packages/mdeditor/static/mdeditor/js/plugins/image-handle-paste \
     && mv image-handle-paste.js /usr/local/lib/python3.8/site-packages/mdeditor/static/mdeditor/js/plugins/image-handle-paste/image-handle-paste.js \
     && rm /usr/local/lib/python3.8/site-packages/mdeditor/templates/markdown.html \
-    && mv markdown.html /usr/local/lib/python3.8/site-packages/mdeditor/templates/markdown.html
+    && mv markdown.html /usr/local/lib/python3.8/site-packages/mdeditor/templates/markdown.html \
+    # supervisor
+    && mkdir -p /var/log/supervisor/gunicorn \
+    # gunicorn
+    && mkdir -p /var/log/gunicorn
 

@@ -55,7 +55,7 @@ services:
 
     working_dir: /opt/Blog
 
-    command: gunicorn Blog.wsgi -w 2 -k gthread -b 0:8000 --reload
+    command: supervisord
 
     logging:
       driver: json-file
