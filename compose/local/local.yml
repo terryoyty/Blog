@@ -19,7 +19,7 @@ services:
 
     working_dir: /opt/Blog
 
-    command: python manage.py runserver 0:8000
+    command: supervisord
 
     logging:
       driver: json-file

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'haystack',
     'app.apps.AppAppConfig',
     'comments.apps.CommentsConfig',
+    'user.apps.UserConfig',
     'mdeditor',
 ]
 
@@ -164,3 +165,6 @@ MDEDITOR_CONFIGS = {
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 HAYSTACK_CUSTOM_HIGHLIGHTER = 'app.utils.Highlighter'
+
+# 未登录时跳转的页面
+LOGIN_URL = '/login'

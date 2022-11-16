@@ -7,13 +7,14 @@ from django.views.decorators.http import require_POST
 from django.views.generic import ListView, DetailView
 from app.mistune_contrib.toc import TocRenderer
 from comments.forms import CommentForm
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, User
 import mistune
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # def index(request):
 #     post_list = Post.objects.all()
 #     return render(request, 'app/index.html', context={'post_list': post_list})
+
 
 class IndexView(ListView):
     model = Post
@@ -21,6 +22,15 @@ class IndexView(ListView):
     context_object_name = 'post_list'
     # 指定 paginate_by 属性后开启分页功能，其值代表每一页包含多少篇文章
     paginate_by = 9
+    redirect_field_name = ''
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            user = self.request.user
+        else:
+            user = get_object_or_404(User, pk=2)
+
+        return super(IndexView, self).get_queryset().filter(author=user)
 
     def get_context_data(self, **kwargs):
         """

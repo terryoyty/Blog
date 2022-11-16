@@ -474,8 +474,8 @@ img {
 
 #header-search-box {
     position: absolute;
-    right: 38px;
-    top: 8px;
+    right: 25px;
+    top: 0;
 }
 
 .search-form {
@@ -483,12 +483,12 @@ img {
     width: 25%;
     position: absolute;
     min-width: 200px;
-    right: -6px;
-    top: 33px;
+    right: 0;
+    top: 50px;
 }
 
 #search-menu span {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 #searchform {
@@ -524,7 +524,7 @@ img {
     font-size: 40px;
     line-height: 0;
     position: relative;
-    top: -6px;
+    top: 0;
 }
 
 /**
@@ -903,4 +903,10 @@ img {
 
 .current a {
     color: red;
+}
+
+.errorlist {
+    list-style: none;
+    padding-left: 0;
+    color: #ff0000;
 }

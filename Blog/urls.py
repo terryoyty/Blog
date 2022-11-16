@@ -27,6 +27,7 @@ urlpatterns = [
 
     path('', include('app.urls')),
     path('', include('comments.urls')),
+    path('', include('user.urls')),
 
     # mdeditor内置本地上传路由
     # path('mdeditor/', include('mdeditor.urls')),

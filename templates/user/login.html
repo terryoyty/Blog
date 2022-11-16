@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <div class="col-12">
+        <br>
+        <form method="post" action=".">
+            {% csrf_token %}
+            <!-- 账号 -->
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <!-- 密码 -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <!-- 提交按钮 -->
+            <button type="submit" class="btn btn-primary">OK</button>
+            <button type="submit" class="btn">
+                <a href="{% url 'user:register' %}">Register</a>
+            </button>
+        </form>
+    </div>
+{% endblock main %}

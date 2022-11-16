@@ -10,7 +10,7 @@ DATABASES = {
         'NAME': 'blog',
         'USER': 'root',
         'PASSWORD': 'TerryMysql123!@#',
-        'HOST': 'mysql',
+        'HOST': '43.143.242.93',
         'PORT': '3306',
     }
 
@@ -19,7 +19,7 @@ DATABASES = {
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'app.elasticsearch2_ik_backend.Elasticsearch2IkSearchEngine',
-        'URL': 'http://elasticsearch:9200/',
+        'URL': 'http://43.143.242.93:9200/',
         'INDEX_NAME': 'blog',
     },
 }

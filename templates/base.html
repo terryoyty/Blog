@@ -11,12 +11,12 @@
     <!-- css -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/pace.css' %}">
     <link rel="stylesheet" href="{% static 'app/css/custom.css' %}">
     {# 代码块高亮 #}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/github.min.css' %}">
 
     {% block link %}
     {% endblock %}
@@ -131,6 +131,7 @@
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
+
                 <nav class="main-nav" role="navigation">
                     <div class="navbar-header">
                         <button type="button" id="trigger-overlay" class="navbar-toggle">
@@ -140,10 +141,26 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="{% url 'app:index' %}" data-hover="首页">首页</a></li>
+                            <!-- 如果用户已经登录，则显示用户名下拉框 -->
+                            {% if user.is_authenticated %}
+                                <li class="cl-effect-11 dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      {{ user.username }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <a class="dropdown-item" href="{% url 'user:logout' %}">退出登录</a>
+                                    </div>
+                                </li>
+                            <!-- 如果用户未登录，则显示 “登录” -->
+                            {% else %}
+                                 <li class="cl-effect-11">
+                                     <a href="{% url 'user:login' %}" data-hover="登录">登录</a>
+                                 </li>
+                            {% endif %}
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
+
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
@@ -153,6 +170,7 @@
                         </form>
                     </div>
                 </div>
+
             </div><!-- col-md-8 -->
         </div>
     </header>
@@ -166,8 +184,8 @@
         {% endfor %}
     {% endif %}
 </div>
-<div class="copyrights">Collect from <a href="https://www.terryoyty.online/">@terryoyty.online</a></div>
-<div class="copyrights">Modified by <a href="https://www.terryoyty.online/">terry</a></div>
+<div class="copyrights">Collect from <a href="https://www.terryoyty.cn/">@terryoyty.cn</a></div>
+<div class="copyrights">Modified by <a href="https://www.terryoyty.cn/">terry</a></div>
 
 <div class="content-body">
     <div class="container">
@@ -191,7 +209,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="copyright">
-                    &copy 2021 - Terry's Arsenal
+                    &copy 2022 - Terry's Arsenal
                 </p>
             </div>
             <div class="col-md-12">
