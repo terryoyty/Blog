@@ -18,5 +18,5 @@ admin.site.register(Tag)
 
 
 # 修改网页title和站点header。
-admin.site.site_title = "Terry's Arsenal Manage"
-admin.site.site_header = "Arsenal Manage"
+admin.site.site_title = "Terry's Blog Manage"
+admin.site.site_header = "Terry's Blog Manage"

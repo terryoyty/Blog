@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block main %}
-    <div class="col-12">
+    <div class="col-md-6">
         <br>
         <form method="post" action=".">
             {% csrf_token %}
@@ -16,8 +16,10 @@
                 <input type="password" class="form-control" id="password" name="password">
             </div>
             <!-- 提交按钮 -->
-            <button type="submit" class="btn btn-primary">OK</button>
-            <button type="submit" class="btn">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn" style="
+                margin-left: 5px;
+            ">
                 <a href="{% url 'user:register' %}">Register</a>
             </button>
         </form>

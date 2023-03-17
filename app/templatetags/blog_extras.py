@@ -51,11 +51,12 @@ def show_tags(context, post=None):
         else:
             user = get_object_or_404(User, pk=2)
 
-        tag_list = Tag.objects.filter(post__author=user)
+        tag_list = Tag.objects.filter(post__author=user).distinct()
         name = '标签云'
     else:
         tag_list = post.tags.all()
         name = '标签'
+
 
     return {
         'tag_list': tag_list,

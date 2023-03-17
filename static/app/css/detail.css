@@ -3,20 +3,19 @@
 }
 
 .entry-title {
-    font-size: 45px;
+    font-size: 2em;
     font-weight: 600;
 }
 
 /*正文字体字号*/
 .entry-content {
-    font-size: 16px;
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 400;
+    margin-top: 50px;
 }
+
 .entry-content h1 {
     margin-top: 80px;
     margin-bottom: 15px;
-    font-size: 30px;
+    font-size: 1.5em;
     font-weight: 600;
     padding-bottom: 10px;
 }
@@ -28,15 +27,19 @@
 .entry-content h2 {
     margin-top: 40px;
     margin-bottom: 15px;
-    font-size: 25px;
+    font-size: 1.4em;
     font-weight: 600;
 }
 
 .entry-content h3 {
     margin-top: 20px;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 1.3em;
     font-weight: 600;
+}
+
+.entry-content p {
+    font-size: 1.2em;
 }
 
 .col-md-4 ul{
@@ -70,6 +73,6 @@ th {
 /*补充说明*/
 blockquote {
     background: #f8f8f866;
-    font-size: 16px;
+    font-size: 1em;
     font-style: italic;
 }

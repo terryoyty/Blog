@@ -42,7 +42,7 @@ h6 {
 }
 
 b {
-    font-weight: 400;
+    font-weight: 600;
 }
 
 a {
@@ -58,16 +58,17 @@ a:hover, a:focus {
     background-color: #eee;
 }
 
-body {
-    color: #444;
-    font-family: 'Lato', sans-serif;
-}
 
 p {
-    font-family: 'Ubuntu', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
     font-weight: 400;
     word-spacing: 1px;
     letter-spacing: 0.01em;
+}
+
+body {
+    color: #444;
+    font-family: "DejaVu Math TeX Gyre";
 }
 
 #single p,
@@ -133,7 +134,7 @@ img {
 
 .logo h1 {
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     font-weight: 300;
 }
 
@@ -150,7 +151,7 @@ img {
     color: #000000 !important;
     padding: 0 0 5px 0 !important;
     margin-right: 30px;
-    font-family: 'Lato', sans-serif;
+    /*font-family: 'Lato', sans-serif;*/
     font-weight: 300;
     font-size: 24px;
 }
@@ -214,8 +215,25 @@ img {
 }
 
 .post {
-    background: #fff;
-    padding: 30px 30px 0;
+    background: #f9f9f9db;
+    margin: 30px 30px 0;
+    border-radius: 25px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.2s ease;
+}
+
+
+
+.post:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.d-post {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.d-post:hover {
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
 
 .entry-title {
@@ -223,22 +241,19 @@ img {
     font-size: 2em;
     margin-bottom: 20px;
     line-height: 1.6;
-    padding: 10px 20px 0;
+    padding: 36px 20px 0;
     font-weight: 600;
 }
 
 .entry-meta {
     text-align: center;
     color: #DDDDDD;
-    font-size: 13px;
-    margin-bottom: 30px;
+    font-size: .5em;
 }
 
 .entry-content {
-    font-size: 18px;
     line-height: 1.9;
     font-weight: 300;
-    color: #000;
 }
 
 .post-category::after,
@@ -254,12 +269,12 @@ img {
  */
 
 .read-more {
-    font-family: 'Ubuntu', sans-serif;
+    /*font-family: 'Ubuntu', sans-serif;*/
     font-weight: 400;
     word-spacing: 1px;
     letter-spacing: 0.01em;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px auto;
 }
 
 .cl-effect-14 a {
@@ -367,7 +382,7 @@ img {
     font-family: "Ionicons";
     position: absolute;
     left: -17px;
-    top: 3px;
+    /*top: 3px;*/
     font-size: 16px;
     color: #000;
 }
@@ -390,7 +405,7 @@ img {
     font-family: "Ionicons";
     position: absolute;
     left: -25px;
-    top: 1px;
+    /*top: 1px;*/
     font-size: 16px;
     color: #000;
 }
@@ -413,7 +428,7 @@ img {
     font-family: "Ionicons";
     position: absolute;
     left: -25px;
-    top: 1px;
+    /*top: 1px;*/
     font-size: 18px;
     color: #000;
 }
@@ -440,6 +455,7 @@ img {
 
 .widget-content ul li {
     margin-bottom: 10px;
+    list-style: none;
 }
 
 .rss {
@@ -910,3 +926,4 @@ img {
     padding-left: 0;
     color: #ff0000;
 }
+
