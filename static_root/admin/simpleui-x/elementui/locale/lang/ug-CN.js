@@ -110,10 +110,17 @@ exports.default = {
       hasCheckedFormat: 'تاللانغىنى {checked}/{total} تۈر'
     },
     image: {
-      error: 'FAILED' // to be translated
+      error: 'مەغلۇب بولدى'
     },
     pageHeader: {
-      title: 'Back' // to be translated
+      title: 'قايتىش'
+    },
+    popconfirm: {
+      confirmButtonText: 'ھەئە',
+      cancelButtonText: 'ياق'
+    },
+    empty: {
+      description: 'ئۇچۇر يوق'
     }
   }
 };

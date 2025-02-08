@@ -180,10 +180,10 @@ a:visited {
 .logo-wrap {
   color: #FFF;
   background-image: linear-gradient(to right bottom, #e8962e, #df6838) !important;
-  background-color: transparent!important;
+  background-color: transparent !important;
 }
 .navbar {
-  background-color: transparent!important;
+  background-color: transparent !important;
   background-image: linear-gradient(to right bottom, #da8342, #e45131) !important;
 }
 /*# sourceMappingURL=orange.css.map */

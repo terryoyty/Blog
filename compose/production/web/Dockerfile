@@ -12,15 +12,15 @@ COPY .config/ /opt/Blog/.config
 
 WORKDIR /opt/Blog/
 
-RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
-    && apt-get clean \
+#RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
+RUN apt-get clean \
     && apt-get update \
      # vim ...
     && apt-get install -y vim supervisor \
-    && pip install -r .config/requirements.txt -i https://pypi.douban.com/simple/ \
+    && pip install -r .config/requirements.txt \
     # 全文检索
-    && pip install django-haystack -i https://pypi.douban.com/simple/ \
-    && pip install "elasticsearch>=2,<3" -i https://pypi.douban.com/simple/ \
+    && pip install django-haystack \
+    && pip install "elasticsearch>=2,<3" \
     # mysql版本报错忽略
     && rm /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py \
     && mv .config/django-mysql-base /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/base.py \
@@ -28,7 +28,7 @@ RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sourc
     && rm /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/operations.py \
     && mv .config/django-mysql-operations /usr/local/lib/python3.8/site-packages/django/db/backends/mysql/operations.py \
     # mysql认证问题（RuntimeError: cryptography is required for sha256_password or caching_sha2_p）
-    && pip install cryptography -i https://pypi.douban.com/simple/ \
+    && pip install cryptography \
     # 时区
     && rm /etc/localtime \
     && cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime \

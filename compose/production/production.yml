@@ -51,7 +51,7 @@ services:
       DJANGO_SECRET_KEY: 2pe8eih8oah2_2z1=7f84bzme7^bwuto7y&f(#@rgd9ux9mp-3
 
     volumes:
-      - /opt/Blog:/opt/Blog
+      - ~/projects/Blog:/opt/Blog
 
     working_dir: /opt/Blog
 

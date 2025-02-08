@@ -23,7 +23,7 @@ exports.default = {
       nextYear: 'Pròxim Any',
       prevMonth: 'Mes anterior',
       nextMonth: 'Pròxim Mes',
-      year: 'Any',
+      year: '',
       month1: 'Gener',
       month2: 'Febrer',
       month3: 'Març',
@@ -109,10 +109,17 @@ exports.default = {
       hasCheckedFormat: '{checked}/{total} seleccionats'
     },
     image: {
-      error: 'FAILED' // to be translated
+      error: 'HA FALLAT'
     },
     pageHeader: {
-      title: 'Back' // to be translated
+      title: 'Tornar'
+    },
+    popconfirm: {
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    },
+    empty: {
+      description: 'Sense Dades'
     }
   }
 };

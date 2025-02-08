@@ -5,8 +5,8 @@ COPY .config/Blog.conf /etc/nginx/conf.d/Blog.conf
 #  sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
 #  && apt-get clean \
 
-RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
-    && apt clean \
+#RUN sed -i "s@http://deb.debian.org@https://mirrors.aliyun.com@g" /etc/apt/sources.list \
+RUN apt clean \
     && apt update \
     && rm /etc/nginx/conf.d/default.conf \
     # https
