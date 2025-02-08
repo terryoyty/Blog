@@ -82,7 +82,7 @@ services:
       - "443:443"
 
     volumes:
-      - /opt/Blog:/opt/Blog
+      - ~/projects/Blog:/opt/Blog
 
     logging:
       driver: json-file
