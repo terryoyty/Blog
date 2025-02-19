@@ -1,6 +1,7 @@
 from qiniu import Auth, put_file, put_data
 from common.log import logger
 from common.o_uuid import get_uuid
+from Blog.settings.common import QNY_UPLOAD_URL
 
 
 class QiniuYun:

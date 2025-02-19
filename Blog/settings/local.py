@@ -32,4 +32,3 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-QNY_UPLOAD_URL = 'https://qnycdn.terryoyty.bj.cn/'

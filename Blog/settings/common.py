@@ -168,3 +168,5 @@ HAYSTACK_CUSTOM_HIGHLIGHTER = 'app.utils.Highlighter'
 
 # 未登录时跳转的页面
 LOGIN_URL = '/login'
+
+QNY_UPLOAD_URL = 'https://qnycdn.terryoyty.bj.cn/'
