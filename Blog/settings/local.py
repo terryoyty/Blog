@@ -31,3 +31,5 @@ SECRET_KEY = '3_&rqz*xc&1_(3(w*(xit!#z74n)i!5u*oszok#+r@(_7tjpid'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+QNY_UPLOAD_URL = 'https://qnycdn.terryoyty.bj.cn/'

@@ -11,7 +11,7 @@ class QiniuYun:
     q = Auth(AccessKey, SecretKey)
     # 要上传的空间
     BucketName = 'terry-arsenal'
-    Url = 'http://qnycdn.terryoyty.cn/'
+    Url = QNY_UPLOAD_URL
 
     _instance = None
 

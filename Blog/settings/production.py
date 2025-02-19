@@ -33,3 +33,5 @@ DEBUG = False
 # ALLOWED_HOSTS = ['127.0.0.1', 'www.terryoyty.com']
 # ALLOWED_HOSTS = ['www.terryoyty.cn', '43.143.242.93']
 ALLOWED_HOSTS = ['www.terryoyty.bj.cn', '120.46.44.197']
+
+QNY_UPLOAD_URL = 'https://qnycdn.terryoyty.bj.cn/'
