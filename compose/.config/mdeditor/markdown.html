@@ -52,6 +52,7 @@
     $(function () {
         let editor = editormd("{{ id }}-wmd-wrapper", {
             watch: {{ config.watch|lower }}, // 关闭实时预览
+            autoFocus: false,  // 禁用自动聚焦
             lineNumbers: {{ config.lineNumbers|lower }},
             lineWrapping: {{ config.lineWrapping|lower }},
             width: "{{ config.width }}",
